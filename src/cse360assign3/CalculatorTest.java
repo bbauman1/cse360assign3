@@ -1,3 +1,5 @@
+//Brett Bauman
+//PIN 117
 package cse360assign3;
 
 import static org.junit.Assert.*;
@@ -85,11 +87,40 @@ public class CalculatorTest {
 	}
 
 	@Test
-	public void testGetHistory() {
+	public void testGetHistoryNoHistory() {
 		Calculator testCalc = new Calculator();
 		
-		//not yet implemented, should return an empty string
-		assertEquals("", testCalc.getHistory());
+		assertEquals("0", testCalc.getHistory());
+	}
+	
+	@Test
+	public void testGetHistoryOneHistory() {
+		Calculator testCalc = new Calculator();
+		testCalc.add(5);
+		
+		assertEquals("0 + 5", testCalc.getHistory());
+	}
+	
+	@Test
+	public void testGetHistoryUsingAllOperations() {
+		Calculator testCalc = new Calculator();
+		testCalc.add(4);
+		testCalc.subtract(2);
+		testCalc.divide(2);
+		testCalc.multiply(2);
+		
+		assertEquals("0 + 4 - 2 / 2 * 2", testCalc.getHistory());
+	}
+	
+	@Test
+	public void testGetHistoryDivideByZero() {
+		Calculator testCalc = new Calculator();
+		testCalc.add(4);
+		testCalc.subtract(2);
+		testCalc.divide(0);
+		testCalc.multiply(2);
+		
+		assertEquals("0 + 4 - 2 / 0 * 2", testCalc.getHistory());
 	}
 
 }

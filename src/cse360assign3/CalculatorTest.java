@@ -13,33 +13,83 @@ public class CalculatorTest {
 	}
 
 	@Test
-	public void testGetTotal() {
-		fail("Not yet implemented");
+	public void testGetTotal() { 
+		Calculator testCalc = new Calculator();
+		
+		// initialized total should be 0
+		assertEquals(0, testCalc.getTotal());
+	}
+	
+	@Test
+	public void testGetTotalWithOperations() {
+		Calculator testCalc = new Calculator();
+		testCalc.add(4);
+		testCalc.subtract(2);
+		testCalc.divide(2);
+		testCalc.multiply(2);
+		
+		// (4 - 2) / 2 * 2 == 2
+		assertEquals(2, testCalc.getTotal());
 	}
 
 	@Test
 	public void testAdd() {
-		fail("Not yet implemented");
+		Calculator testCalc = new Calculator();
+		testCalc.add(3);
+		
+		assertEquals(3, testCalc.getTotal());
+		
 	}
 
 	@Test
 	public void testSubtract() {
-		fail("Not yet implemented");
+		Calculator testCalc = new Calculator();
+		testCalc.subtract(3);
+		
+		assertEquals(-3, testCalc.getTotal());
 	}
 
 	@Test
 	public void testMultiply() {
-		fail("Not yet implemented");
+		Calculator testCalc = new Calculator();
+		
+		//add 1 so that total isn't 0 (because anything multiplied by 0 is 0)
+		testCalc.add(1);
+		testCalc.multiply(3);
+		
+		assertEquals(3, testCalc.getTotal());
 	}
 
 	@Test
 	public void testDivide() {
-		fail("Not yet implemented");
+		Calculator testCalc = new Calculator();
+		
+		//add 3 to total so we aren't dividing from 0
+		testCalc.add(3);
+		testCalc.divide(3);
+		
+		assertEquals(1, testCalc.getTotal());
+	}
+	
+	@Test
+	public void testDivideByZero() {
+		Calculator testCalc = new Calculator();
+		
+		//add 3 to total so we aren't dividing from 0
+		testCalc.add(3);
+		
+		//divide by 0
+		testCalc.divide(0);
+		
+		assertEquals(0, testCalc.getTotal());
 	}
 
 	@Test
 	public void testGetHistory() {
-		fail("Not yet implemented");
+		Calculator testCalc = new Calculator();
+		
+		//not yet implemented, should return an empty string
+		assertEquals("", testCalc.getHistory());
 	}
 
 }
